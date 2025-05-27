@@ -2,7 +2,12 @@
 @section('content')
 
 <h1>Latest Movies</h1>
-
+@if (session('succes'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 <div class="row">
     {{-- Looping data --}}
     @foreach ($movies as $movie)
@@ -11,7 +16,7 @@
         <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="{{ $movie->cover_image }}" class="img-fluid rounded-start" alt="...">
+                <img src="{{ asset('storage/'.$movie->cover_image) }}" class="img-fluid rounded-start" alt="...">
               </div>
               <div class="col-md-8">
                 <div class="card-body">

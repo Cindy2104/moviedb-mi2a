@@ -64,4 +64,10 @@ class MovieController extends Controller
 
         return redirect('/')->with('success', 'Movie saved successfully');
     }
+
+    public function dataMovie()
+    {
+        $movies = Movie::latest()->paginate(6);
+        return view('homepage', compact('movies'));
+    }
 }

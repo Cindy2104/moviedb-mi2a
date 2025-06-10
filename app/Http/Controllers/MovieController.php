@@ -68,6 +68,21 @@ class MovieController extends Controller
     public function dataMovie()
     {
         $movies = Movie::latest()->paginate(6);
-        return view('homepage', compact('movies'));
+        return view('layouts.dataMovie', compact('movies'));
+    }
+
+    public function edit($id)
+    {
+
+        echo "Edit movie $id";
+    }
+
+    public function delete($id)
+    {
+      if (Gate::allows('delete')) {
+        echo "Delete movie $id";
+      }else {
+        abort(403);
+      }
     }
 }
